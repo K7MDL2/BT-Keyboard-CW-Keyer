@@ -7,7 +7,7 @@
 [esp32]: https://img.shields.io/badge/ESP32-green "ESP32"
 [esp32-WROOM-32]: https://img.shields.io/badge/ESP32--WROOM--32-orange "ESP32-WROOM-32"
 
-CW keyer with BT keyboard on ESP32-WROOM-32 module   ( under construction )
+CW keyer with BT keyboard on ESP32-WROOM-32 module   ( new project under construction, sends out text to a LED and buzzer today )
 
 As of Oct 2, 2025 I have CMake automatically copy binary image files to the "precompiled_images" folder.  You can now upload these image files to the CPU and skip compiling this code.  Follow the instructions on this Wiki page.
   https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Using-the-Flash-Download-Tool
@@ -39,6 +39,7 @@ These are some direct links to the Wiki pages
     https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/CPU-Module
     https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/IO-Pin-Assignments
     https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Using-the-Flash-Download-Tool
+
 
 
 
