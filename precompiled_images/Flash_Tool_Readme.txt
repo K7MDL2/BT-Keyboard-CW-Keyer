@@ -12,3 +12,9 @@ There are 3 files plus this readme file.  The filenames are listed below along w
 1. Bootloader.bin   0x1000 (1 plus 3 zeros)
 2. bt-keyboard-cw-keyer.bin  0x20000  (2 plus 4 zeros)
 3. partition-table.bin 0x9000 (9 plus 3 zeros)
+
+
+Enter the above data into the tool, select your com port connected to your CPU, then hit START.  It runs fairly quick.  
+Allow some boot time.  Should start responding to keystrokes.  
+
+You can use a terminal program to connect to the CPU at 115200 baud and see the test you typed and other startup info such as BLE and BT devices discovered.
