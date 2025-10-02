@@ -27,7 +27,8 @@ Chip is ESP32-D0WD-V3 (revision v3.1)
 Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
 Crystal is 40MHz
 
-I am using esp-idf 5.5.1 in Visual Studio Code.  I had to add the Arduino32 component to support the arduino Tone() and noTone() functions rather then mek the effort to set up PWM channels (using ledc) manaully).  The bt_keyboard .cpp and .hpp are under components/bt_keyboard/src folder.  The CamkeLists.tx files are set accordingly.  I edited the c_cpp_properties.json and sdkconfig and sdkconfig.defaults quite a bit to get things working.
+I am using esp-idf 5.5.1 in Visual Studio Code.  I had to add the Arduino32 component to support the arduino Tone() and noTone() functions rather then mek the effort to set up PWM channels (using ledc) manaully).  The bt_keyboard .cpp and .hpp are under components/bt_keyboard/src folder.  The CMakeLists.tx files are set accordingly.  I edited the c_cpp_properties.json and sdkconfig and sdkconfig.defaults quite a bit to get things working.
+
 
 
 
