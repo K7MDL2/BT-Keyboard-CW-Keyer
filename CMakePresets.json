@@ -2,9 +2,9 @@
     "version": 10,
     "configurePresets": [
         {
-            "name": "bt_keyboard",
-            "displayName": "BTKeyboard",
-            "description": "Build for BTKeyboard",
+            "name": "bt_keyboard_cw_keyer",
+            "displayName": "BT-Keyboard-CW-Keyer",
+            "description": "Build for BT-Keyboard-CW-Keyer",
             "binaryDir": "${sourceDir}/build",
             "inherits": [
                 "esp-idf"
@@ -34,9 +34,9 @@
     "buildPresets": [
         {
             "name": "bt_keyboard",
-            "description": "BTKeyboard",
-            "displayName": "BTKeyboard",
-            "configurePreset": "bt_keyboard"
+            "description": "BT-Keyboard-CW-Keyer",
+            "displayName": "BT-Keyboard-CW-Keyer",
+            "configurePreset": "bt_keyboard_cw_keyer"
         }
     ]
 }
