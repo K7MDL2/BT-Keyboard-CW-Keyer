@@ -1,3 +1,12 @@
+| Support Targets | ![alt text][esp32] |
+| --- | --- |
+
+| Boards Used | ![alt text][esp32-WROOM-32]|
+| --- | --- |
+
+[esp32]: https://img.shields.io/badge/ESP32-green "ESP32"
+[esp32-WROOM-32]: https://img.shields.io/badge/ESP32--WROOM--32-orange "ESP32-WROOM-32"
+
 CW keyer with BT keyboard on ESP32-WROOM-32 module
 
 This merges 2 projects and adds several new feqtures
@@ -19,3 +28,4 @@ Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme 
 Crystal is 40MHz
 
 I am using esp-idf in Visual Studio Code.  I had to add  the Arduino32 component to support the arduino Tone() and noTone() functions.  The bt_keyboard .cpp and .hpp are under components/bt_keyboard/src folder.  the CamkeLists.tx files are set accordingly.  I edited the c_cpp_properties.json and sdkconfig and sdkconfig.defaults quite a bit to get things working.
+
