@@ -9,6 +9,11 @@
 
 CW keyer with BT keyboard on ESP32-WROOM-32 module   ( under construction )
 
+AS of OCt 1 I have CMAke automatically copy binary image files to teh "pprecompiled_images" folder.  You can now upload these image files to the CPU and skip compiling this code.  Follow the instructions on this Wiki page.
+  https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Using-the-Flash-Download-Tool
+Ignore any reference to ESP32-S3, the page was copied from one of my other projects, should be the same, just use the 3 files in the precompiled_images folder here.
+
+
 This merges 2 projects.
 
 1. The BT Keyboad Class was derived largely intact from https://github.com/turgu1/bt-keyboard.   
@@ -28,6 +33,7 @@ Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme 
 Crystal is 40MHz
 
 I am using esp-idf 5.5.1 in Visual Studio Code.  I had to add the Arduino32 component to support the arduino Tone() and noTone() functions rather then mek the effort to set up PWM channels (using ledc) manaully).  The bt_keyboard .cpp and .hpp are under components/bt_keyboard/src folder.  The CMakeLists.tx files are set accordingly.  I edited the c_cpp_properties.json and sdkconfig and sdkconfig.defaults quite a bit to get things working.
+
 
 
 
