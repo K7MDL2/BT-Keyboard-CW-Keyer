@@ -7,9 +7,9 @@
 [esp32]: https://img.shields.io/badge/ESP32-green "ESP32"
 [esp32-WROOM-32]: https://img.shields.io/badge/ESP32--WROOM--32-orange "ESP32-WROOM-32"
 
-CW keyer with BT keyboard on ESP32-WROOM-32 module
+CW keyer with BT keyboard on ESP32-WROOM-32 module   ( under construction )
 
-This merges 2 projects and adds several new feqtures
+This merges 2 projects   It is early days with this first effort to replace the PS2Keyboard with the BT keyboard and send out basic ketters and nuymbers to a buzzer and LED.  May add features like macros, memories, own callsign, own grid, destination call and grid and a screen.   Going to consider using this experience to add BT Keybopard to something like the K3NG keyer project.
 
 1. The BT Keyboad Class was derived largely intact from https://github.com/turgu1/bt-keyboard.   
 
@@ -27,5 +27,6 @@ Chip is ESP32-D0WD-V3 (revision v3.1)
 Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
 Crystal is 40MHz
 
-I am using esp-idf in Visual Studio Code.  I had to add  the Arduino32 component to support the arduino Tone() and noTone() functions.  The bt_keyboard .cpp and .hpp are under components/bt_keyboard/src folder.  the CamkeLists.tx files are set accordingly.  I edited the c_cpp_properties.json and sdkconfig and sdkconfig.defaults quite a bit to get things working.
+I am using esp-idf 5.5.1 in Visual Studio Code.  I had to add the Arduino32 component to support the arduino Tone() and noTone() functions rather then mek the effort to set up PWM channels (using ledc) manaully).  The bt_keyboard .cpp and .hpp are under components/bt_keyboard/src folder.  The CamkeLists.tx files are set accordingly.  I edited the c_cpp_properties.json and sdkconfig and sdkconfig.defaults quite a bit to get things working.
+
 
