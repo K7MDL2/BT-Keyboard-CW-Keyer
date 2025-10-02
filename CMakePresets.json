@@ -33,10 +33,10 @@
     ],
     "buildPresets": [
         {
-            "name": "bt_keyboard",
+            "name": "bt_keyboard_cw_keyer",
             "description": "BT-Keyboard-CW-Keyer",
             "displayName": "BT-Keyboard-CW-Keyer",
             "configurePreset": "bt_keyboard_cw_keyer"
         }
-    ]
+   ]
 }
