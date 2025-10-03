@@ -28,7 +28,7 @@ It is early days with this first effort to replace the PS2Keyboard in "The Morse
 
 I am using a Rii model i8+ (aka K08) mini dual mode keyboard with touchpad and buttons.  The bt_keyboard code was looking for appearance == 0x031c and UUID == 0x1812 to initiate connection to the keyboard.  The Rii keyboard showed up as UUID=0x0000.  I bypassed the UUID match and just use appearance value. The code scans BLE thgen BT to build a device list.  It then scans the list and connects to the first device that matches the appearance number.
 
-As of 10/1/2025 initial code check-in, the code accepts 0-9, a-z, and space character.  Letters are converted to upper case.  The characters are sent out real time as morse code on a PWM I/O pin.  I hooked up a standard piezo buzzer.  The speed and frequency are set in the code.  An onboard user LED (blue in my case) on pin 2 also lights.
+As of 10/1/2025 initial code check-in, the code accepts 0-9, a-z, and space character.  Letters are converted to upper case.  The characters are sent out real time as morse code on a PWM I/O pin.  I hooked up a standard piezo buzzer to pin 25.  The speed and frequency are set in the code.  An onboard user LED (blue in my case) on pin 2 also lights.
 
 Hardware is a ESP32-WROOM-32 module from https://www.amazon.com/dp/B0C5MJ6CPL.   Use care, some are older or even single core versions, many listing make it hard to tell.
 
@@ -49,6 +49,7 @@ You can flash precompiled images and skip teh compiler setup by following one of
 https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Using-the-Flash-Download-Tool
 
 https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Flash-Firmware-Using-the-esptool-Utility
+
 
 
 
