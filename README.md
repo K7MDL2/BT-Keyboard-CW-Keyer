@@ -36,9 +36,12 @@ I am using esp-idf 5.5.1 in Visual Studio Code.  I had to add the Arduino32 comp
 
 These are some direct links to the Wiki pages
     
-    https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/CPU-Module
-    https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/IO-Pin-Assignments
-    https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Using-the-Flash-Download-Tool
+https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/CPU-Module
+
+https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/IO-Pin-Assignments
+
+https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Using-the-Flash-Download-Tool
+
 
 
 
