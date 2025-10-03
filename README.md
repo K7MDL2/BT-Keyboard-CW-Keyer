@@ -10,8 +10,12 @@
 CW keyer with BT keyboard on ESP32-WROOM-32 module   ( new project under construction, sends out text to a LED and buzzer today )
 
 As of Oct 2, 2025 I have CMake automatically copy binary image files to the "precompiled_images" folder.  You can now upload these image files to the CPU and skip compiling this code.  Follow the instructions on this Wiki page.
+
   https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Using-the-Flash-Download-Tool
-Ignore any reference to ESP32-S3, the page was copied from one of my other projects, should be the same, just use the 3 files in the precompiled_images folder here.
+  
+  https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Flash-Firmware-Using-the-esptool-Utility
+
+Use the 3 files in the precompiled_images folder here.  The Flash_Tool_REadme.txt has offset info as do the Wiki pages.
 
 
 This merges 2 projects.
@@ -40,7 +44,13 @@ https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/CPU-Module
 
 https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/IO-Pin-Assignments
 
+You can flash precompiled images and skip teh compiler setup by following one of these 2 processes.  'esptool.py' is an alternative if teh Flash Download Tool does not work for you.  It uses the same files, just uses a Python program executed on the command line.
+
 https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Using-the-Flash-Download-Tool
+
+https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Flash-Firmware-Using-the-esptool-Utility
+
+
 
 
 
