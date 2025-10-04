@@ -37,6 +37,7 @@ Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme 
 Crystal is 40MHz
 
 I am using esp-idf 5.5.1 in Visual Studio Code.  I had to add the Arduino32 component to support the arduino Tone() and noTone() functions rather then make the effort to set up PWM channels (using ledc() ) manually).  The bt_keyboard .cpp and .hpp are under components/bt_keyboard/src folder.  The CMakeLists.tx files are set accordingly.  I edited the c_cpp_properties.json and sdkconfig and sdkconfig.defaults quite a bit to get things working.
+-> Update Oct 3, 2025: I found a workaround for the BT controller_init error at startup.  Had to make a call to btStarted() inthe main program setup before calling bt_keyboard.setup().  It forces a certain esp bt api .c file to get linked in and it magically makes things work.  So I can now compile and run this under Arduino IDE.  I also was able to integrate the bt_keyboard library into a 2022 era fork of K3NG Keyer, modified to run on ESP32 hardware. It works but the BT-keyboard loop is hanging up the main app loop so the timing of dits and dahs is affected. Still work to do.
 
 These are some direct links to the Wiki pages
     
@@ -49,6 +50,7 @@ You can flash precompiled images and skip teh compiler setup by following one of
 https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Using-the-Flash-Download-Tool
 
 https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Flash-Firmware-Using-the-esptool-Utility
+
 
 
 
