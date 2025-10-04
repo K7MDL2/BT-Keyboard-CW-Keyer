@@ -9,5 +9,6 @@ sdkconfig.old
 managed_components
 .vscode/tasks.json
 .clangd
+d:/esp-idf/**
 
 

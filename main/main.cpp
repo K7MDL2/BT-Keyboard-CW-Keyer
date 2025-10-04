@@ -407,6 +407,8 @@ extern "C"
 
         ESP_LOGI(TAG, "BT and BLE device Scan Setup");
         
+        btStarted();
+
         if (bt_keyboard.setup(pairing_handler, keyboard_connected_handler,
                               keyboard_lost_connection_handler)) { // Must be called once
             bt_keyboard.devices_scan(); // Required to discover new keyboards and for pairing

@@ -493,7 +493,7 @@ void BTKeyboard::add_bt_scan_result(esp_bd_addr_t bda, esp_bt_cod_t *cod, esp_bt
     return;
   }
 
-  r->transport = ESP_HID_TRANSPORT_BT;
+//  r->transport = ESP_HID_TRANSPORT_BT;  causes crash on BT keyboard peripheral disvoery, works fine without this.]
 
   memcpy(res->bda, bda, sizeof(esp_bd_addr_t));
   memcpy(&res->bt.cod, cod, sizeof(esp_bt_cod_t));
