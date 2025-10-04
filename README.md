@@ -7,6 +7,17 @@
 [esp32]: https://img.shields.io/badge/ESP32-green "ESP32"
 [esp32-WROOM-32]: https://img.shields.io/badge/ESP32--WROOM--32-orange "ESP32-WROOM-32"
 
+October 4, 2025 - No longer working on this.  I have replaced this with an Arduino IDE version at https://github.com/K7MDL2/Keyboard_keyer_3
+
+I was able to get this working under Arduino IDE by inserting btStarted() function just before the BT_keyboard.setup() to bypass a bt_controller_init error under Arduino IDE.   The Arduinio version of this is simpler to compile and I added more keyboard keystroke processing and assinged the onboard LED to show BT Keyboard connecxted status.  See this project linkeds above.   I set up the btKeyboard code as a Arduino library also.
+
+I have also been able to integrate the BT Keboard library into a 2022 version of K3NG Keyer modified to run onteh ESP32.  See my modified fork of that here  https://github.com/K7MDL2/k3ng_cw_keyer-master_2022
+
+
+
++++++++++++++++++  Archived ++++++++++++++++++++++++++++++
+
+
 CW keyer with BT keyboard on ESP32-WROOM-32 module   ( new project under construction, sends out text to a LED and buzzer today )
 
 As of Oct 2, 2025 I have CMake automatically copy binary image files to the "precompiled_images" folder.  You can now upload these image files to the CPU and skip compiling this code.  Follow the instructions on this Wiki page.
@@ -37,6 +48,7 @@ Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme 
 Crystal is 40MHz
 
 I am using esp-idf 5.5.1 in Visual Studio Code.  I had to add the Arduino32 component to support the arduino Tone() and noTone() functions rather then make the effort to set up PWM channels (using ledc() ) manually).  The bt_keyboard .cpp and .hpp are under components/bt_keyboard/src folder.  The CMakeLists.tx files are set accordingly.  I edited the c_cpp_properties.json and sdkconfig and sdkconfig.defaults quite a bit to get things working.
+-> Update Oct 3, 2025: I found a workaround for the BT controller_init error at startup.  Had to make a call to btStarted() inthe main program setup before calling bt_keyboard.setup().  It forces a certain esp bt api .c file to get linked in and it magically makes things work.  So I can now compile and run this under Arduino IDE.  I also was able to integrate the bt_keyboard library into a 2022 era fork of K3NG Keyer, modified to run on ESP32 hardware. It works but the BT-keyboard loop is hanging up the main app loop so the timing of dits and dahs is affected. Still work to do.
 
 These are some direct links to the Wiki pages
     
@@ -49,6 +61,8 @@ You can flash precompiled images and skip teh compiler setup by following one of
 https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Using-the-Flash-Download-Tool
 
 https://github.com/K7MDL2/BT-Keyboard-CW-Keyer/wiki/Flash-Firmware-Using-the-esptool-Utility
+
+
 
 
 
