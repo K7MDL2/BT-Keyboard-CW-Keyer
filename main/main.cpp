@@ -38,13 +38,15 @@
 #include "esp32-hal-log.h"
 #endif
 
-static constexpr char const *TAG = "Main";
+//static constexpr char const *TAG = "Main";
+static const char *TAG = "BT_KEYER";
 char ch;
 char ch_digit;
 BTKeyboard bt_keyboard;
 ////////////////////////////////////////////////////////////////////////
-int pin = 2 ;                  // blink the LED for now... 
-int tpin = 25;                 // tone pin
+int LED_BT_Connected_pin = 2;   // Show BT keyboard connected state
+int LED_pin = 25 ;                  // blink the LED for now... 
+int tpin = 14;                 // tone pin
 int spin = 26;                 // speed sense switch
 //pinMode(7, INPUT_PULLUP);
 //if (digitalRead(spin) == LOW) wpm = 12; 
@@ -53,15 +55,20 @@ unsigned int wpm = 13;
 int ditlen = 1200 / wpm ;
 
 void pairing_handler(uint32_t pid) {
-  std::cout << "Please enter the following pairing code, " << std::endl
+    std::cout << "Please enter the following pairing code, " << std::endl
             << "followed with ENTER on your keyboard: " << std::dec << pid << std::endl;
 }
 
 void keyboard_lost_connection_handler() {
-  ESP_LOGW(TAG, "====> Lost connection with keyboard <====");
+    ESP_LOGW(TAG, "====> Lost connection with keyboard <====");
+    digitalWrite(LED_BT_Connected_pin, 0);
+
 }
 
-void keyboard_connected_handler() { ESP_LOGI(TAG, "----> Connected to keyboard <----"); }
+void keyboard_connected_handler() { 
+    ESP_LOGI(TAG, "----> Connected to keyboard <----"); 
+    digitalWrite(LED_BT_Connected_pin, 1);
+}
 
 ////////////////////////////////////////////////////////////////////////
 //
@@ -247,10 +254,10 @@ void scale()
  
 void dit()
 {
-    digitalWrite(pin, HIGH) ;
+    digitalWrite(LED_pin, HIGH) ;
     tone(tpin, freq) ;
     mydelay(ditlen) ;
-    digitalWrite(pin, LOW) ;
+    digitalWrite(LED_pin, LOW) ;
     noTone(tpin) ;
     mydelay(ditlen) ;
  
@@ -258,10 +265,10 @@ void dit()
  
 void dah()
 {
-    digitalWrite(pin, HIGH) ;
+    digitalWrite(LED_pin, HIGH) ;
     tone(tpin, freq) ;
     mydelay(3*ditlen) ;
-    digitalWrite(pin, LOW) ;
+    digitalWrite(LED_pin, LOW) ;
     noTone(tpin) ;
     mydelay(ditlen) ;
 }
@@ -384,7 +391,8 @@ extern "C"
     {
         esp_err_t ret;
 
-        pinMode(pin, OUTPUT) ;
+        pinMode(LED_BT_Connected_pin, OUTPUT) ;
+        pinMode(LED_pin, OUTPUT) ;
         pinMode(tpin,   OUTPUT) ; 
         
         #ifdef PS2
@@ -394,9 +402,11 @@ extern "C"
         Serial.begin(115200) ;
         Serial.println(F("Morse Code Keyboard by K6HX, modified by K7MDL for BT keyboard 2025")) ;
 
+        //esp_log_level_set(TAG, ESP_LOG_NONE);
+
         // To test the Pairing code entry, uncomment the following line as pairing info is
         // kept in the nvs. Pairing will then be required on every boot.
-        // ESP_ERROR_CHECK(nvs_flash_erase());
+        //ESP_ERROR_CHECK(nvs_flash_erase());
 
         ret = nvs_flash_init();
         if ((ret == ESP_ERR_NVS_NO_FREE_PAGES) || (ret == ESP_ERR_NVS_NEW_VERSION_FOUND)) {
@@ -433,8 +443,9 @@ extern "C"
                 //std::cout << "RECEIVED KEYBOARD EVENT: ";
                 //for (int n = 0; n < inf.size; n++) {
                 if (inf.size == 8) {   // keyboard chars are len = 8, mousr and others are len=4
+                    // inf.key[0] is 0 for key, 2 for SHIFT+key, 1 for CTRL+key, 4 for ALT+key 
                     if (inf.keys[2] != 0) {  // filter out key up events where are all 0s.
-                    std::cout << std::hex << +inf.keys[2] << ", ";  // do not print key up events
+                    ; //std::cout << std::hex << +inf.keys[2] << ", ";  // do not print key up events
                     }
                 }
                 
@@ -443,7 +454,7 @@ extern "C"
                 }
 
                 if (inf.keys[2] == 0x28) {  // enter key
-                    ch = ' ';
+                    ch = '\n';
                 }
 
                 if (inf.keys[2] < 0x1e) {
@@ -461,8 +472,8 @@ extern "C"
                 }
 
                 // filter out key up events
-                if (inf.keys[2] != 0)
-                    std::cout << ch;
+                if (inf.keys[2] != 0 )
+                    ;//std::cout << ch;
 
                 //std::cout << std::endl;   // sned when we get ener or lf/cr
             #endif
@@ -478,7 +489,7 @@ extern "C"
                 send(c1);
                 send(c2);
                 send(c3);
-            } else if (ch != 0) {
+            } else if (ch != 0 || ch == '\n' || ch == ' ' || (ch > 31 && ch < 127)) {
                 send(ch);
             }
 
